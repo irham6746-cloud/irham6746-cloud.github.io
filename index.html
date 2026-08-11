@@ -1,1 +1,870 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+    <title>Hangatnya Soto Betawi</title>
+
+    <style>
+        /* =========================
+           RESET
+        ========================= */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background: #f6f0df;
+            color: #243c29;
+            line-height: 1.6;
+        }
+
+        /* =========================
+           NAVBAR
+        ========================= */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+
+            padding: 15px 7%;
+            background: rgba(23, 63, 32, 0.97);
+
+            box-shadow: 0 4px 15px rgba(0,0,0,0.15);
+        }
+
+        .logo {
+            font-size: 23px;
+            font-weight: bold;
+            color: white;
+        }
+
+        .logo span {
+            color: #d7ae3d;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 25px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: #d7ae3d;
+        }
+
+        /* =========================
+           HERO
+        ========================= */
+        .hero {
+            min-height: 100vh;
+
+            padding: 120px 7% 70px;
+
+            display: grid;
+            grid-template-columns: 1fr 0.85fr;
+            gap: 50px;
+            align-items: center;
+
+            background:
+                linear-gradient(
+                    125deg,
+                    #f6f0df 0%,
+                    #f6f0df 58%,
+                    #285b2d 58%,
+                    #285b2d 100%
+                );
+        }
+
+        .kicker {
+            color: #3d7625;
+            font-size: 18px;
+            font-weight: bold;
+            letter-spacing: 2px;
+        }
+
+        .script {
+            margin-left: 30px;
+            margin-bottom: -8px;
+
+            color: #d7ae3d;
+            font-family: cursive;
+            font-size: 45px;
+            font-style: italic;
+        }
+
+        .hero h1 {
+            display: inline-block;
+
+            padding: 25px 30px;
+
+            color: white;
+            background: #173f20;
+
+            border-radius: 0 45px 45px 0;
+
+            font-size: clamp(50px, 7vw, 84px);
+            line-height: 0.9;
+            text-transform: uppercase;
+        }
+
+        .hero-text {
+            max-width: 620px;
+            margin-top: 25px;
+
+            font-size: 19px;
+            color: #3e503f;
+        }
+
+        .hero-text strong {
+            color: #285b2d;
+        }
+
+        .btn {
+            display: inline-block;
+
+            margin-top: 25px;
+            padding: 14px 24px;
+
+            color: #173f20;
+            background: #d7ae3d;
+
+            border-radius: 10px;
+
+            text-decoration: none;
+            font-weight: bold;
+
+            box-shadow: 0 7px 15px rgba(0,0,0,0.15);
+
+            transition: 0.3s;
+        }
+
+        .btn:hover {
+            transform: translateY(-3px);
+            background: #c49c2e;
+        }
+
+        /* POSTER */
+        .poster {
+            width: 100%;
+            max-width: 510px;
+
+            margin: auto;
+
+            display: block;
+
+            border-radius: 20px;
+
+            box-shadow: 0 22px 50px rgba(0,0,0,0.35);
+        }
+
+        /* =========================
+           SECTION
+        ========================= */
+        section {
+            padding: 85px 7%;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 45px;
+        }
+
+        .section-title h2 {
+            color: #173f20;
+            font-size: 40px;
+        }
+
+        .section-title p {
+            margin-top: 8px;
+            color: #657066;
+        }
+
+        /* =========================
+           TENTANG
+        ========================= */
+        .about {
+            max-width: 1100px;
+            margin: auto;
+
+            display: grid;
+            grid-template-columns: 1.1fr 0.9fr;
+            gap: 28px;
+        }
+
+        .about-box {
+            padding: 35px;
+
+            border-radius: 25px;
+        }
+
+        .about-main {
+            color: white;
+            background: #173f20;
+        }
+
+        .about-main h3 {
+            margin-bottom: 12px;
+
+            color: #d7ae3d;
+            font-size: 30px;
+        }
+
+        .about-side {
+            background: #fffdf7;
+
+            border: 1px solid #e3dbc6;
+
+            box-shadow: 0 10px 25px rgba(23,63,32,0.08);
+        }
+
+        .about-side h3 {
+            margin-bottom: 10px;
+
+            color: #173f20;
+            font-size: 25px;
+        }
+
+        /* =========================
+           KEUNGGULAN
+        ========================= */
+        .features {
+            max-width: 1100px;
+            margin: auto;
+
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 22px;
+        }
+
+        .feature-card {
+            padding: 30px;
+
+            text-align: center;
+
+            background: #fffdf7;
+
+            border: 1px solid #e3dbc6;
+            border-radius: 22px;
+
+            box-shadow: 0 10px 28px rgba(23,63,32,0.08);
+
+            transition: 0.3s;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-7px);
+        }
+
+        .icon {
+            margin-bottom: 10px;
+            font-size: 42px;
+        }
+
+        .feature-card h3 {
+            margin-bottom: 8px;
+            color: #173f20;
+        }
+
+        /* =========================
+           MENU
+        ========================= */
+        .menu-section {
+            color: white;
+            background: #173f20;
+        }
+
+        .menu-section .section-title h2 {
+            color: #d7ae3d;
+        }
+
+        .menu-section .section-title p {
+            color: #dce8d9;
+        }
+
+        .menu {
+            max-width: 1100px;
+            margin: auto;
+
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 22px;
+        }
+
+        .menu-card {
+            padding: 28px;
+
+            color: #243c29;
+            background: #fffdf7;
+
+            border-radius: 22px;
+
+            transition: 0.3s;
+        }
+
+        .menu-card:hover {
+            transform: translateY(-6px);
+        }
+
+        .menu-card h3 {
+            color: #173f20;
+            font-size: 22px;
+        }
+
+        .price {
+            margin-top: 15px;
+
+            color: #4a7d26;
+            font-size: 28px;
+            font-weight: bold;
+        }
+
+        /* =========================
+           ORDER
+        ========================= */
+        .order {
+            max-width: 1050px;
+
+            margin: 75px auto;
+            padding: 55px 30px;
+
+            text-align: center;
+
+            color: #173f20;
+            background: #d7ae3d;
+
+            border-radius: 28px;
+        }
+
+        .order h2 {
+            margin-bottom: 12px;
+
+            font-size: 39px;
+            line-height: 1.15;
+        }
+
+        .order p {
+            margin-bottom: 20px;
+        }
+
+        .order .btn {
+            color: white;
+            background: #173f20;
+        }
+
+        /* =========================
+           FOOTER
+        ========================= */
+        footer {
+            padding: 26px;
+
+            text-align: center;
+
+            color: #dfe9dc;
+            background: #102d18;
+        }
+
+        /* =========================
+           RESPONSIVE
+        ========================= */
+        @media (max-width: 800px) {
+
+            nav {
+                padding: 14px 20px;
+            }
+
+            .nav-links {
+                display: none;
+            }
+
+            .hero {
+                grid-template-columns: 1fr;
+
+                padding: 100px 20px 60px;
+
+                background:
+                    linear-gradient(
+                        155deg,
+                        #f6f0df 0%,
+                        #f6f0df 72%,
+                        #285b2d 72%,
+                        #285b2d 100%
+                    );
+            }
+
+            .hero h1 {
+                font-size: 54px;
+            }
+
+            .poster {
+                max-width: 430px;
+            }
+
+            section {
+                padding: 60px 20px;
+            }
+
+            .about {
+                grid-template-columns: 1fr;
+            }
+
+            .features {
+                grid-template-columns: 1fr;
+            }
+
+            .menu {
+                grid-template-columns: 1fr;
+            }
+
+            .order {
+                margin: 55px 20px;
+                padding: 45px 22px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- =========================
+         NAVBAR
+    ========================== -->
+
+    <nav>
+
+        <div class="logo">
+            Hangatnya <span>Soto Betawi</span>
+        </div>
+
+        <ul class="nav-links">
+
+            <li>
+                <a href="#tentang">Tentang</a>
+            </li>
+
+            <li>
+                <a href="#keunggulan">Keunggulan</a>
+            </li>
+
+            <li>
+                <a href="#menu">Menu</a>
+            </li>
+
+            <li>
+                <a href="#pesan">Pesan</a>
+            </li>
+
+        </ul>
+
+    </nav>
+
+
+    <!-- =========================
+         HERO
+    ========================== -->
+
+    <header class="hero">
+
+        <div>
+
+            <div class="kicker">
+                READY ON DELIVERY
+            </div>
+
+            <div class="script">
+                Hangatnya
+            </div>
+
+            <h1>
+                Soto<br>
+                Betawi
+            </h1>
+
+            <p class="hero-text">
+
+                <strong>
+                    Nikmatnya tradisi, hangatnya di hati!
+                </strong>
+
+                <br><br>
+
+                Soto Betawi dengan kuah gurih,
+                rempah pilihan, dan isian yang lezat.
+                Hadir untuk menemani waktu makan
+                bersama keluarga dan teman.
+
+            </p>
+
+            <a href="#menu" class="btn">
+                Lihat Menu →
+            </a>
+
+        </div>
+
+
+        <!--
+            Ganti nama file di bawah
+            jika nama gambar berbeda.
+        -->
+
+        <img
+            src="poster-soto.jpg"
+            alt="Poster Hangatnya Soto Betawi"
+            class="poster"
+        >
+
+    </header>
+
+
+    <!-- =========================
+         TENTANG SOTO BETAWI
+    ========================== -->
+
+    <section id="tentang">
+
+        <div class="section-title">
+
+            <h2>
+                Tentang Soto Betawi
+            </h2>
+
+            <p>
+                Kenali kuliner khas Jakarta
+                yang kaya rasa dan tradisi.
+            </p>
+
+        </div>
+
+
+        <div class="about">
+
+            <div class="about-box about-main">
+
+                <h3>
+                    Rasa Gurih,
+                    Rempah yang Khas
+                </h3>
+
+                <p>
+
+                    Soto Betawi merupakan salah satu
+                    kuliner khas Jakarta yang terkenal
+                    dengan kuahnya yang gurih dan kaya
+                    rempah.
+
+                </p>
+
+                <br>
+
+                <p>
+
+                    Soto ini umumnya berisi daging sapi
+                    dan berbagai pelengkap yang membuat
+                    rasanya semakin nikmat.
+
+                </p>
+
+                <br>
+
+                <p>
+
+                    Disajikan hangat, Soto Betawi cocok
+                    dinikmati saat makan siang,
+                    makan malam, maupun ketika
+                    berkumpul bersama keluarga.
+
+                </p>
+
+            </div>
+
+
+            <div class="about-box about-side">
+
+                <h3>
+                    Tradisional & Delicious
+                </h3>
+
+                <p>
+
+                    Cita rasa Soto Betawi berasal dari
+                    perpaduan bumbu, rempah, kuah yang
+                    gurih, serta isian yang lezat.
+
+                </p>
+
+                <br>
+
+                <p>
+
+                    Perpaduan tersebut membuat Soto
+                    Betawi memiliki karakter rasa
+                    yang khas dan berbeda dari soto
+                    lainnya.
+
+                </p>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================
+         KEUNGGULAN
+    ========================== -->
+
+    <section id="keunggulan">
+
+        <div class="section-title">
+
+            <h2>
+                Kenapa Pilih Soto Kami?
+            </h2>
+
+            <p>
+                Hangat, gurih, dan dibuat untuk
+                menghadirkan rasa yang berkesan.
+            </p>
+
+        </div>
+
+
+        <div class="features">
+
+
+            <div class="feature-card">
+
+                <div class="icon">
+                    🥩
+                </div>
+
+                <h3>
+                    Isian Lezat
+                </h3>
+
+                <p>
+
+                    Perpaduan daging dan pelengkap
+                    yang membuat setiap suapan
+                    terasa nikmat.
+
+                </p>
+
+            </div>
+
+
+            <div class="feature-card">
+
+                <div class="icon">
+                    🌿
+                </div>
+
+                <h3>
+                    Rempah Pilihan
+                </h3>
+
+                <p>
+
+                    Bumbu dan rempah memberikan
+                    aroma serta cita rasa khas
+                    Soto Betawi.
+
+                </p>
+
+            </div>
+
+
+            <div class="feature-card">
+
+                <div class="icon">
+                    🔥
+                </div>
+
+                <h3>
+                    Disajikan Hangat
+                </h3>
+
+                <p>
+
+                    Nikmati soto dalam keadaan
+                    hangat agar rasa gurihnya
+                    semakin terasa.
+
+                </p>
+
+            </div>
+
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================
+         MENU
+    ========================== -->
+
+    <section class="menu-section" id="menu">
+
+        <div class="section-title">
+
+            <h2>
+                Menu Favorit
+            </h2>
+
+            <p>
+                Pilihan sederhana dengan
+                harga yang ramah.
+            </p>
+
+        </div>
+
+
+        <div class="menu">
+
+
+            <div class="menu-card">
+
+                <h3>
+                    Soto Betawi
+                </h3>
+
+                <p>
+
+                    Soto Betawi dengan kuah
+                    gurih dan isian khas.
+
+                </p>
+
+                <div class="price">
+                    Rp10.000
+                </div>
+
+            </div>
+
+
+            <div class="menu-card">
+
+                <h3>
+                    Soto + Nasi
+                </h3>
+
+                <p>
+
+                    Soto Betawi lengkap dengan
+                    nasi putih hangat.
+
+                </p>
+
+                <div class="price">
+                    Rp15.000
+                </div>
+
+            </div>
+
+
+            <div class="menu-card">
+
+                <h3>
+                    Pelengkap
+                </h3>
+
+                <p>
+
+                    Tambahkan nasi, kerupuk,
+                    sambal, atau jeruk limau
+                    sesuai selera.
+
+                </p>
+
+                <div class="price">
+                    Mulai Rp2.000
+                </div>
+
+            </div>
+
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================
+         PEMESANAN
+    ========================== -->
+
+    <section id="pesan">
+
+        <div class="order">
+
+            <h2>
+                Nikmatnya Tradisi,
+                <br>
+                Hangatnya di Hati!
+            </h2>
+
+            <p>
+
+                Siap menikmati Soto Betawi?
+                Hubungi kami untuk pemesanan
+                dan delivery.
+
+            </p>
+
+            <!--
+                Nomor WhatsApp dari poster.
+                Format internasional:
+                628137289324
+            -->
+
+            <a
+                href="https://wa.me/628137289324"
+                target="_blank"
+                class="btn"
+            >
+                📱 WhatsApp
+                <br>
+                +62 813-7289-324
+            </a>
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================
+         FOOTER
+    ========================== -->
+
+    <footer>
+
+        © 2026 Hangatnya Soto Betawi
+        <br>
+        UMKM Kuliner Khas Jakarta
+
+    </footer>
+
+</body>
+</html>
